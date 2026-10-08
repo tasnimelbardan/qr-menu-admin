@@ -1,0 +1,279 @@
+/*
+   BREW CO. QR MENU - style.css
+ */
+
+/* ========== 1. VARIABLES ========== */
+/* Colors and radius defined once; change them here and the whole page updates */
+:root {
+  --bg: #ffffff;
+  --card: #f3ece3;
+  --brown-dark: #4a2c1d;
+  --brown-accent: #b98b5e;
+  --text-muted: #7a6a5f;
+  --line: #e6ddd2;
+  --radius: 16px;
+}
+
+/* ========== 2. BASE ========== */
+* {
+  box-sizing: border-box;
+}
+
+/* Page background, text color, and font (with fallbacks if Inter fails to load) */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--brown-dark);
+  font-family: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ========== 3. APP WRAPPER ========== */
+/* Wraps the whole page; fills the full screen width with side padding */
+.app {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 16px 24px;
+  background: var(--bg);
+}
+
+/* ========== 4. HEADER ========== */
+/* Row layout: hamburger on the left, logo in the center, cart on the right */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+/* Decorative icons: same size on both sides and not clickable */
+.header-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Pulls the icons outward to cancel the empty space inside the PNG files */
+.app-header .header-icon:first-child { margin-left: -10px; }
+.app-header .header-icon:last-child  { margin-right: -10px; }
+
+/* Logo size; width follows automatically to keep proportions */
+.logo {
+  height: 64px;
+  width: auto;
+}
+
+/* ========== 5. HERO BANNER ========== */
+/* Rounded card; overflow hidden clips the image to the rounded corners */
+.hero {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Banner image fills the width and keeps its proportions (text inside is never cropped) */
+.hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ========== 6. MENU TITLE ========== */
+/* "MENU" centered with a line on each side */
+.menu-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 24px 0 12px;
+}
+
+/* The two lines beside the title; flex: 1 makes them stretch equally */
+.menu-title::before,
+.menu-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--brown-accent);
+}
+
+/* ========== 7. CATEGORY HEADER ========== */
+/* Top row of each category: name on the left, "View all" on the right */
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Small icon + category title side by side */
+.category-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--brown-accent);
+}
+
+.category-name i {
+  font-size: 1.1rem;
+}
+
+.category-name h3 {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--brown-dark);
+}
+
+/* "View all >" text (decorative) */
+.view-all {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ========== 8. MENU ITEMS ========== */
+/* Removes the default bullets and indent from the list */
+.item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* One menu row: image | name + description | price */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+/* No divider under the last item of a category */
+.item:last-child {
+  border-bottom: none;
+}
+
+/* Item photo; flex-shrink: 0 stops it from being squeezed into an oval */
+.item-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Text block takes all the space between the image and the price;
+   min-width: 0 lets long text wrap instead of pushing the price away */
+.item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-info h4 {
+  margin: 0 0 2px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.item-info p {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: var(--text-muted);
+}
+
+/* Price on the right, always on one line */
+.item-price {
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* ========== 9. DELIVERY BANNER ========== */
+/* Beige bar at the bottom: scooter | text | arrow */
+.delivery {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 10px 14px;
+  background: var(--card);
+  border-radius: 12px;
+}
+
+.delivery-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+/* Bold line stacked above the small line */
+.delivery-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  line-height: 1.3;
+}
+
+.delivery-text strong {
+  font-size: 0.8rem;
+}
+
+.delivery-text span {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ========== 10. SMALL PHONES (360px and below) ========== */
+/* Slightly smaller header and items so nothing is cramped on narrow screens */
+@media (max-width: 360px) {
+  .header-icon { width: 40px; height: 40px; }
+  .logo { height: 54px; }
+
+  .item-img { width: 56px; height: 56px; }
+  .item-info h4 { font-size: 0.85rem; }
+  .item-price { font-size: 0.9rem; }
+}
+
+/* ========== 11. TABLET (600px and up) ========== */
+/* More side padding and slightly larger items */
+@media (min-width: 600px) {
+  .app { padding: 0 32px 32px; }
+
+  .item-img { width: 72px; height: 72px; }
+  .item-info h4 { font-size: 1rem; }
+  .item-info p { font-size: 0.8rem; }
+  .item-price { font-size: 1rem; }
+}
+
+/* ========== 12. DESKTOP (992px and up) ========== */
+/* Larger text, images, and delivery banner for laptops */
+@media (min-width: 992px) {
+  .app { padding: 0 48px 40px; }
+
+  .item-img { width: 84px; height: 84px; }
+  .item-info h4 { font-size: 1.05rem; }
+  .item-info p { font-size: 0.85rem; }
+  .item-price { font-size: 1.05rem; }
+
+  .category-name h3 { font-size: 0.95rem; }
+  .view-all { font-size: 0.8rem; }
+
+  .delivery-img { width: 48px; height: 48px; }
+  .delivery-text strong { font-size: 1rem; }
+  .delivery-text span { font-size: 0.85rem; }
+}
+
+/* ========== 13. LARGE SCREENS (1400px and up) ========== */
+/* Extra size for big monitors so the page doesn't look tiny */
+@media (min-width: 1400px) {
+  .app { padding: 0 64px 48px; }
+
+  .item-img { width: 96px; height: 96px; }
+  .item-info h4 { font-size: 1.15rem; }
+  .item-info p { font-size: 0.95rem; }
+  .item-price { font-size: 1.15rem; }
+}
