@@ -1,0 +1,2 @@
+# Nobody can open these files from the browser; PHP can still include them
+Require all denied

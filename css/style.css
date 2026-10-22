@@ -227,6 +227,19 @@ body {
   color: var(--text-muted);
 }
 
+/* ========== EMPTY STATES ========== */
+/* Placeholder box for items without an image */
+.item-img--empty {
+  background: var(--card);
+}
+
+/* Message shown when the menu has no active categories */
+.empty-msg {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 0;
+}
+
 /* ========== 10. SMALL PHONES (360px and below) ========== */
 /* Slightly smaller header and items so nothing is cramped on narrow screens */
 @media (max-width: 360px) {
